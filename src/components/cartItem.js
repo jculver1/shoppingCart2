@@ -3,11 +3,13 @@ import React from 'react'
 
 const CartItemComponent = (props) => {
     return (
-        <div class="collection-item">
-            <div class="row">
-                <div class="col-md-8">{props.item.product.name}</div>
-                <div class="col-md-2">{props.item.product.priceInCents}</div>
-                <div class="col-md-2">{props.item.quantity}</div>
+        <div className="list-group">
+            <div className="list-group-item">
+            <div className="row">
+                <div className="col-md-8">{props.item.product.name}</div>
+                <div className="col-md-2">{props.item.product.priceInCents}</div>
+                <div className="col-md-2">{props.item.quantity}</div>
+                </div>
             </div>
         </div>
     )
