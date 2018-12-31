@@ -4,6 +4,7 @@ import Header from './components/header'
 import Footer from './components/footer'
 import CartItems from './components/cartItems'
 import AddItems from './components/AddItem'
+import Total from './components/total'
 
 class App extends Component {
 constructor () {
@@ -20,23 +21,33 @@ constructor () {
       { id: 47, name: 'Ergonomic Bronze Lamp', priceInCents: 40000 },
       { id: 48, name: 'Awesome Leather Shoes', priceInCents: 3990 },
     ],
-    checkOutItems: []
+    checkOutItems: [],
+    total: 0
   }
-
 }
+
 
 addItem = (event) =>{
   event.preventDefault()
 
 let newItem = {
   product: {
-    id: 1, //this.state.cartItemsList.length + 1,
+    id: this.state.checkOutItems.length + 1,
     name: this.state.name,
     priceInCents: this.state.price
   },
   quantity: this.state.quantity
 }  
-console.log(newItem)
+
+let newTotal = {
+  total: ((this.state.price * this.state.quantity) / 100 )
+}
+
+this.setState({
+  checkOutItems: [...this.state.checkOutItems, newItem],
+  total: (this.state.total + newTotal.total )
+})
+console.log(this.state.total)
 }
 
 selectItem = (event) => {
@@ -51,24 +62,25 @@ this.setState({
 
 quantity = (event) => {
   event.preventDefault()
-  console.log(event.target.value)
   this.setState({
     quantity: event.target.value
   })
 }
 
   render() {
-   const cartItemsList = 
-    [
-      { id: 1, product: { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 }, quantity: 1 },
-      { id: 2, product: { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 }, quantity: 2 },
-      { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },
-    ]
+  //  let cartItemsList = 
+  //   [
+  //     { id: 1, product: { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 }, quantity: 1 },
+  //     { id: 2, product: { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 }, quantity: 2 },
+  //     { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },
+  //   ]
+  
 
     return (
       <div>
         <Header/>
-        <CartItems cartItemsList = {cartItemsList}/>
+        <CartItems checkOutItems = {this.state.checkOutItems}/>
+        <Total total = {this.state.total}/>
         <AddItems addItem = {this.addItem} product = {this.state.products} selectItem = {this.selectItem} quantity = {this.quantity} />
         <Footer copyright='2016'/>
       </div>

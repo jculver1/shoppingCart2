@@ -17,7 +17,7 @@ const CartItems = (props) => {
                     <div className="col-md-2">Quantity</div>
                 </div>
             </div>
-            {props.cartItemsList.map(item => <CartItemComponent key={item.id} item={item}/>)}
+            {props.checkOutItems.map(item => <CartItemComponent key={item.id} item={item}/>)}
         </div>
         </div>
     )
