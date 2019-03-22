@@ -26,7 +26,6 @@ constructor () {
   }
 }
 
-
 addItem = (event) =>{
   event.preventDefault()
 
@@ -45,14 +44,14 @@ let newTotal = {
 
 this.setState({
   checkOutItems: [...this.state.checkOutItems, newItem],
-  total: (this.state.total + newTotal.total )
+  total: (this.state.total + newTotal.total)
 })
-console.log(this.state.total)
 }
 
 selectItem = (event) => {
 event.preventDefault()
 let findPrice = this.state.products.filter(products => products.name === event.target.value)
+
 let priceOfItem = findPrice.map(obj => obj.priceInCents)
 this.setState({
   name: event.target.value,
@@ -68,14 +67,6 @@ quantity = (event) => {
 }
 
   render() {
-  //  let cartItemsList = 
-  //   [
-  //     { id: 1, product: { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 }, quantity: 1 },
-  //     { id: 2, product: { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 }, quantity: 2 },
-  //     { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },
-  //   ]
-  
-
     return (
       <div>
         <Header/>

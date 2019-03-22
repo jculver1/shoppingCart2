@@ -5,7 +5,6 @@ import CartItemComponent from './cartItem'
 const CartItems = (props) => {
 
   
-
     return (
         <div className="container">
         <h1>Cart Items</h1>
